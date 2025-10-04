@@ -29,6 +29,8 @@ function App() {
   const [selectedYear, setSelectedYear] = useState<string>('')
   const [selectedFuel, setSelectedFuel] = useState<string>('')
   const [kmsDriven, setKmsDriven] = useState<number | ''>('')
+  const [predictionResult, setPredictionResult] = useState<string | null>(null)
+  const [predictionError, setPredictionError] = useState<string | null>(null)
 
   useEffect(() => {
     async function loadCsv() {
@@ -90,9 +92,14 @@ function App() {
 
   async function handlePredict() {
     if (!selectedCompany || !selectedModel || !selectedYear || !selectedFuel || kmsDriven === '') {
-      alert('Please select Company, Model, Year, Fuel and enter Kms Driven.')
+      setPredictionError('Please select Company, Model, Year, Fuel and enter Kms Driven.')
+      setPredictionResult(null)
       return
     }
+
+    // Clear previous results
+    setPredictionError(null)
+    setPredictionResult(null)
 
     // Backend expects form fields: company, car_models, year, fuel_type, kilo_driven
     const form = new URLSearchParams()
@@ -107,10 +114,10 @@ function App() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       })
       // Backend returns plain text number string
-      alert(`Predicted price: ${res.data}`)
+      setPredictionResult(res.data)
     } catch (e) {
       console.error(e)
-      alert('Prediction request failed. Backend may not be running yet.')
+      setPredictionError('Prediction request failed. Backend may not be running yet.')
     }
   }
 
@@ -208,8 +215,21 @@ function App() {
 
           <button onClick={handlePredict} disabled={loading} className="button">
             Predict
-        </button>
-      </div>
+          </button>
+          
+          {predictionResult && (
+            <div className="result success">
+              <h3>Predicted Price</h3>
+              <p className="price">₹ {predictionResult}</p>
+            </div>
+          )}
+          
+          {predictionError && (
+            <div className="result error">
+              <p>{predictionError}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
