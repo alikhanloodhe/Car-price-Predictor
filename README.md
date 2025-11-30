@@ -1,4 +1,4 @@
-  # Car_Price Predictor 🚗💰
+  # Car Price Predictor 
 
 The Car Price Predictor is a Machine Learning-based web application that estimates the price of a used car based on key attributes such as company, model, year of manufacture, and kilometers driven. It combines a Flask backend with a React frontend, providing users with an intuitive and interactive experience.
 
