@@ -78,6 +78,7 @@ Frontend: Deployed on Vercel
 Backend: Runs locally via Flask (deployment planned soon)
 
 ## 🗂️ Folder Structure
+```
 Car_Price_Predictor/
 │
 ├── backend/
@@ -97,7 +98,7 @@ Car_Price_Predictor/
 │   └── package.json
 │
 └── README.md
-
+```
 # 🧪 How to Run Locally
 1️⃣ Clone the Repository
 git clone https://github.com/yourusername/Car_Price_Predictor.git
