@@ -101,7 +101,7 @@ Car_Price_Predictor/
 ```
 # 🧪 How to Run Locally
 1️⃣ Clone the Repository
-git clone https://github.com/yourusername/Car_Price_Predictor.git
+git clone https://github.com/alikhanloodhe/Car_Price_Predictor.git
 cd Car_Price_Predictor
 
 2️⃣ Setup Backend
